@@ -1,0 +1,25 @@
+<mat-card fxLayout="column" fxLayoutAlign="start space-between">
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="2em">
+    <mat-form-field>
+      <mat-label> Work Order # </mat-label>
+      <input matInput [(ngModel)]="workOrderId" type="number" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Description </mat-label>
+      <input matInput [(ngModel)]="description" type="text" />
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end space-between" fxLayoutGap="0.5em">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSearch()"
+      [disabled]="this.workOrderId || this.description ? false : true"
+    >
+      Search
+    </button>
+    <button mat-stroked-button color="warn" (click)="onClear()">Clear</button>
+  </div>
+</mat-card>
+
+<app-table [dataSource]="workOrders"></app-table>
